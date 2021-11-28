@@ -1,4 +1,4 @@
-export async function post({ request }) {
+export const post = (request) => {
     var fn = request.body.get('firstName');
     
     return {
@@ -7,4 +7,4 @@ export async function post({ request }) {
         },
         body: `<p>${fn}</p>`
     }
-}
+};
