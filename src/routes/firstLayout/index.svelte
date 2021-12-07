@@ -9,17 +9,22 @@
 </style>
 
 <script context="module">
+
     export async function load({ page, fetch, session, stuff }) {
         const url = "/firstLayout/cityList";
-        const res = await fetch(url);
-
-        if (res.ok) {
+        // const res = fetch(url);
+        // var ar = await fetch("/firstLayout/cityList").then(x => x.text());
+        var response = await fetch(url);
+        var body = await response.text(); // .json() is asynchronous and therefore must be awaited
+        // console.log(stuff);
+        if (response.ok) {
             console.log("Loading okay");
-			// return {
-			// 	props: {
-			// 		article: await res.json()
-			// 	}
-			// };
+			return {
+				props: {
+					article: body
+                    // article: 123,
+				}
+			};
             return {};
 		}
         return {
@@ -27,9 +32,11 @@
 			error: new Error(`Could not load ${url}`)
 		};
     }
+    // console.log(article);
 </script>
 
 <script>
+    export const article = "";
     let msAbs = 0;  
 
     setInterval(() => {msAbs++;},100);

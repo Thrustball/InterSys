@@ -16,11 +16,11 @@ export async function get() {
     const data = fs.readFileSync('static/cityList.txt',
         {encoding:'utf8', flag:'r'});
 
-    console.log(typeof(data.split("\n")));
+    // console.log(typeof(data.split("\n")));
     return {
         headers: {
-            'content-type':'text/html',
+            'content-type':'text/plain',
         },
-        body: "<p>Hello</p>"
+        body: data
     }
 }
