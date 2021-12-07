@@ -17,7 +17,7 @@ export const post = (request) => {
         if (err) {
           console.error(err.message);
         }
-        console.log('Connected to the names database.');
+        // console.log('Connected to the names database.');
       });
       const inStr = "INSERT INTO demographie (sex, age) VALUES ('" + sex + "', '" + age + "');";
       db.run(inStr, (err) => {
@@ -25,7 +25,7 @@ export const post = (request) => {
             return console.log(err.message);
         }
     });
-      console.log(inStr);
+      // console.log(inStr);
     db.close();
     htext2 = '<p>Database updates</p>';
     }
