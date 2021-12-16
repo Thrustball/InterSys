@@ -1,5 +1,9 @@
 import * as fs from 'fs';
-import { promisify } from 'util';
+import { count } from '/src/routes/stores/store1.js';
+
+count.subscribe(value => {
+    console.log(value);
+});
 
 export async function get() {
     // fs.readdir('.', (err, files) => {
@@ -16,11 +20,13 @@ export async function get() {
     const data = fs.readFileSync('static/cityList.txt',
         {encoding:'utf8', flag:'r'});
 
-    // console.log(typeof(data.split("\n")));
+    let dataS = data.split("\n");
+    const jsonString = JSON.stringify(Object.assign({}, dataS))
+
     return {
         headers: {
-            'content-type':'text/plain',
+            'content-type':'application/json',
         },
-        body: data
+        body: jsonString
     }
 }
